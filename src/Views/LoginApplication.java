@@ -1,4 +1,4 @@
-package Controllers;
+package Views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
