@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,21 +25,23 @@ public class LoginController {
         String password = passwordField.getText();
         if (Controllers.Authenticator.authenticate(username, password)) {
             welcomeText.setText("Welcome, " + username + "!");
-            createAccountForm();
         } else {
             welcomeText.setText("Invalid credentials. Please try again.");
         }
 
             }
-        public void createAccountForm() {
+        public void registerOnMouseClicked(ActionEvent event) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
                 Stage registerStage = new Stage();
-                registerStage.initStyle(StateStyle.UNDECORATED);
+                    registerStage.initStyle(StageStyle.UNDECORATED);
                 registerStage.setScene(new Scene(root, 520, 420));
                 registerStage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }}
+        }
+
+
+}
 

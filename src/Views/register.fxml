@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
    <children>
       <AnchorPane layoutY="1.0" prefHeight="66.0" prefWidth="520.0" style="-fx-background-color: #E96151;">
          <children>
@@ -40,16 +36,16 @@
             <Font size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="setPasswordField" layoutX="19.0" layoutY="261.0" prefHeight="25.0" prefWidth="336.0" promptText="Password">
+      <PasswordField fx:id="setPasswordField" accessibleRole="PASSWORD_FIELD" layoutX="19.0" layoutY="261.0" prefHeight="25.0" prefWidth="336.0" promptText="Password">
          <font>
             <Font size="12.0" />
          </font>
-      </TextField>
-      <TextField fx:id="confirmPasswordfield" layoutX="19.0" layoutY="310.0" prefHeight="25.0" prefWidth="336.0" promptText="Confirm Password">
+      </PasswordField>
+      <PasswordField fx:id="confirmPasswordfield" accessibleRole="PASSWORD_FIELD" layoutX="19.0" layoutY="310.0" prefHeight="25.0" prefWidth="336.0" promptText="Confirm Password">
          <font>
             <Font size="12.0" />
          </font>
-      </TextField>
+      </PasswordField>
       <Button fx:id="registerButton" layoutX="80.0" layoutY="345.0" mnemonicParsing="false" onAction="#registrationButtonOnAction" prefHeight="26.0" prefWidth="277.0" style="-fx-background-color: #E96151;" text="Register" textFill="#fcf6f6">
          <font>
             <Font size="12.0" />

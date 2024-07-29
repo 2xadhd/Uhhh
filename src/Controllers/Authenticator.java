@@ -3,7 +3,7 @@ package Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Authenticator {
+public class    Authenticator {
     private static final Map<String, String> users = new HashMap<>();
 
     static {
