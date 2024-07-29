@@ -11,7 +11,7 @@
          <children>
             <ImageView fx:id="userImageView" fitHeight="42.0" fitWidth="69.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Views/image.png" />
+                  <Image url="@../Resources/image.png" />
                </image>
             </ImageView>
             <Label layoutX="89.0" layoutY="22.0" text="User Registration">
