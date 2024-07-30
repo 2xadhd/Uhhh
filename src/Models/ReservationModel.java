@@ -10,6 +10,9 @@ public class ReservationModel {
     String flightID1;
     String flightID2;
     boolean round;
+    String cardNumber;
+    String expDate;
+
 
     public ReservationModel(String reservationID,
                             String username,
@@ -19,8 +22,9 @@ public class ReservationModel {
                             String returnTime,
                             String flightID1,
                             String flightID2,
-                            boolean round
-    ) {
+                            boolean round,
+                            String cardNumber,
+    String expDate) {
         this.reservationID = reservationID;
         this.username = username;
         this.seatNum = seatNum;
@@ -30,6 +34,8 @@ public class ReservationModel {
         this.flightID1 = flightID1;
         this.flightID2 = flightID2;
         this.round = round;
+        this.cardNumber = cardNumber;
+        this.expDate = expDate;
     }
 
     public String getReservationID() {
@@ -102,5 +108,21 @@ public class ReservationModel {
 
     public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getExpDate() {
+        return expDate;
+    }
+
+    public void setExpDate(String expDate) {
+        this.expDate = expDate;
     }
 }
