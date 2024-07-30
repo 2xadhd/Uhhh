@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
    <children>
       <AnchorPane prefHeight="72.0" prefWidth="425.0" style="-fx-background-color: #E96151;">
          <children>
             <ImageView fx:id="userImageView" fitHeight="42.0" fitWidth="69.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Desktop/image.png" />
+                  <Image url="@../Resources/image.png" />
                </image>
             </ImageView>
             <Label layoutX="75.0" layoutY="22.0" prefHeight="29.0" prefWidth="226.0" text="User Registration">
@@ -55,7 +51,7 @@
             <Font size="12.0" />
          </font>
       </Button>
-      <Button fx:id="closeButton" layoutX="75.0" layoutY="495.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Close" textFill="#fcf6f6">
+      <Button fx:id="closeButton" layoutX="75.0" layoutY="495.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Close" textFill="#fcf6f6">
          <font>
             <Font size="12.0" />
          </font>

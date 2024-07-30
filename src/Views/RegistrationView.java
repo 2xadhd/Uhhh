@@ -17,7 +17,7 @@ public class RegistrationView extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 520, 420));
+            registerStage.setScene(new Scene(root, 420, 535));
             registerStage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -3,10 +3,8 @@ package Controllers;
 import Views.LoginView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -73,11 +71,10 @@ public class RegisterController implements Initializable {
         try {
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("login-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 435, 535);
-            stage.setTitle("Welcome to our Airlines!");
-            stage.setScene(scene);
-            stage.show();
+            Stage loginStage = new Stage();
+            LoginView login = new LoginView();
+            login.start(stage);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
