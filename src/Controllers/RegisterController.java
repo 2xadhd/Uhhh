@@ -1,16 +1,20 @@
 package Controllers;
 
-import javafx.application.Platform;
+import Views.LoginView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,8 +64,17 @@ public class RegisterController implements Initializable {
     }
 
     public void closeButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-        Platform.exit();
+        try {
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("login-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 473);
+            stage.setTitle("Welcome to our Airlines!");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
