@@ -27,7 +27,7 @@ public class RegisterController implements Initializable {
     @FXML
     private Label registrationMessageLabel;
     @FXML
-    private PasswordField setPasswordField;
+    private PasswordField passwordField;
     @FXML
     private PasswordField confirmPasswordField;
     @FXML
@@ -38,6 +38,10 @@ public class RegisterController implements Initializable {
     private TextField firstnameTextField;
     @FXML
     private TextField lastnameTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField phonenumberTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,8 +54,10 @@ public class RegisterController implements Initializable {
     public void registrationButtonOnAction(ActionEvent event) {
         String firstname = firstnameTextField.getText();
         String lastname = lastnameTextField.getText();
+        String email = emailTextField.getText();
+        String phone = phonenumberTextField.getText();
         String username = usernameTextField.getText();
-        String password = setPasswordField.getText();
+        String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
         if (password.equals(confirmPassword)) {
@@ -68,7 +74,7 @@ public class RegisterController implements Initializable {
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("login-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 400, 473);
+            Scene scene = new Scene(fxmlLoader.load(), 435, 535);
             stage.setTitle("Welcome to our Airlines!");
             stage.setScene(scene);
             stage.show();
