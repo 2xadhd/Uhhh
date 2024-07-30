@@ -4,6 +4,7 @@ public class ReservationModel {
     String reservationID;
     String username;
     int seatNum;
+    int seatNum2;
     double price;
     String departTime;
     String returnTime;
@@ -17,6 +18,7 @@ public class ReservationModel {
     public ReservationModel(String reservationID,
                             String username,
                             int seatNum,
+                            int seatNum2,
                             double price,
                             String departTime,
                             String returnTime,
@@ -28,6 +30,7 @@ public class ReservationModel {
         this.reservationID = reservationID;
         this.username = username;
         this.seatNum = seatNum;
+        this.seatNum2 = seatNum2;
         this.price = price;
         this.departTime = departTime;
         this.returnTime = returnTime;
@@ -60,6 +63,14 @@ public class ReservationModel {
 
     public void setSeatNum(int seatNum) {
         this.seatNum = seatNum;
+    }
+
+    public int getSeatNum2() {
+        return seatNum2;
+    }
+
+    public void setSeatNum2(int seatNum2) {
+        this.seatNum2 = seatNum2;
     }
 
     public String getDepartTime() {

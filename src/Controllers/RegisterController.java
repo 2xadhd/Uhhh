@@ -14,8 +14,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class RegisterController implements Initializable {
     @FXML
@@ -46,6 +48,18 @@ public class RegisterController implements Initializable {
         File userImageFile = new File("Images/account_logo.png");
         Image userImage = new Image(userImageFile.toURI().toString());
         userImageView.setImage(userImage);
+        File file = new File(
+                "/Database/test.txt");
+        Scanner sc = null;
+        try {
+            sc = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        while (sc.hasNextLine())
+            System.out.println(sc.nextLine());
+
     }
 
     @FXML
@@ -61,7 +75,7 @@ public class RegisterController implements Initializable {
         if (password.equals(confirmPassword)) {
             confirmPasswordLabel.setText("");
             registrationMessageLabel.setText("User has been registered successfully!");
-            // Add logic to actually register the user here
+
         } else {
             confirmPasswordLabel.setText("Password does not match");
         }
@@ -78,6 +92,11 @@ public class RegisterController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void addCustomer()
+    {
 
     }
 }
