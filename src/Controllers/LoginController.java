@@ -38,6 +38,7 @@ public class LoginController {
                 Stage registerStage = new Stage();
                 RegistrationView register = new RegistrationView();
                 register.start(stage);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
