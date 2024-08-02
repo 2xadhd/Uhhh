@@ -1,14 +1,14 @@
 package Controllers;
 
+import Views.RegistrationView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class LoginController {
     @FXML
@@ -30,13 +30,15 @@ public class LoginController {
         }
 
             }
-        public void registerOnMouseClicked(ActionEvent event) {
+        public void onRegisterMouseClick(ActionEvent event) {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+                Parent root = FXMLLoader.load(getClass().getResource("/Views/register.fxml"));
                 Stage registerStage = new Stage();
-                    registerStage.initStyle(StageStyle.UNDECORATED);
-                registerStage.setScene(new Scene(root, 520, 420));
-                registerStage.show();
+                RegistrationView register = new RegistrationView();
+                register.start(stage);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

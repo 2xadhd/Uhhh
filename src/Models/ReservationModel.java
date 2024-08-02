@@ -4,32 +4,41 @@ public class ReservationModel {
     String reservationID;
     String username;
     int seatNum;
+    int seatNum2;
     double price;
     String departTime;
     String returnTime;
     String flightID1;
     String flightID2;
     boolean round;
+    String cardNumber;
+    String expDate;
+
 
     public ReservationModel(String reservationID,
                             String username,
                             int seatNum,
+                            int seatNum2,
                             double price,
                             String departTime,
                             String returnTime,
                             String flightID1,
                             String flightID2,
-                            boolean round
-    ) {
+                            boolean round,
+                            String cardNumber,
+    String expDate) {
         this.reservationID = reservationID;
         this.username = username;
         this.seatNum = seatNum;
+        this.seatNum2 = seatNum2;
         this.price = price;
         this.departTime = departTime;
         this.returnTime = returnTime;
         this.flightID1 = flightID1;
         this.flightID2 = flightID2;
         this.round = round;
+        this.cardNumber = cardNumber;
+        this.expDate = expDate;
     }
 
     public String getReservationID() {
@@ -54,6 +63,14 @@ public class ReservationModel {
 
     public void setSeatNum(int seatNum) {
         this.seatNum = seatNum;
+    }
+
+    public int getSeatNum2() {
+        return seatNum2;
+    }
+
+    public void setSeatNum2(int seatNum2) {
+        this.seatNum2 = seatNum2;
     }
 
     public String getDepartTime() {
@@ -102,5 +119,21 @@ public class ReservationModel {
 
     public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getExpDate() {
+        return expDate;
+    }
+
+    public void setExpDate(String expDate) {
+        this.expDate = expDate;
     }
 }
