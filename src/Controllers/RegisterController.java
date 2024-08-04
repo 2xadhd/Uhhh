@@ -58,25 +58,25 @@ public class RegisterController implements Initializable {
         userImageView.setImage(userImage);
         String path = new File("src/Database/Customer.txt").getAbsolutePath();
         File file = new File(path);
-        Scanner sc = null;
+        Scanner sc;
         try {
             sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                input = sc.nextLine();
+                String[] names = input.split(",");
+                if (names.length == 6) {
+                    CustomerModel cus = new CustomerModel();
+                    cus.setUserID(names[0].trim());
+                    cus.setPassword(names[1].trim());
+                    cus.setFirstName(names[2].trim());
+                    cus.setLastName(names[3].trim());
+                    cus.setPhoneNumber(names[4].trim());
+                    cus.setEmail(names[5].trim());
+                    cusList.add(cus);
+                }
+            }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        while (sc.hasNextLine()) {
-            input = sc.nextLine();
-            String[] names = input.split(",");
-            CustomerModel cus = new CustomerModel();
-            cus.setUserID(names[0].trim());
-            cus.setPassword(names[1].trim());
-            cus.setFirstName(names[2].trim());
-            cus.setLastName(names[3].trim());
-            cus.setPhoneNumber(names[4].trim());
-            cus.setEmail(names[5].trim());
-            cusList.add(cus);
-
+            e.printStackTrace();
         }
     }
 
@@ -91,25 +91,25 @@ public class RegisterController implements Initializable {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-while (flag) {
-    for (CustomerModel customerModel : cusList)
-        if (Objects.equals(username, customerModel.getUserID())) {
-            registrationMessageLabel.setText("Username has been taken!");
-            flag = false;
-            break;
+        while (flag) {
+            for (CustomerModel customerModel : cusList)
+                if (Objects.equals(username, customerModel.getUserID())) {
+                    registrationMessageLabel.setText("Username has been taken!");
+                    flag = false;
+                    break;
+                }
+            if (!password.equals(confirmPassword)) {
+                registrationMessageLabel.setText("Password does not match");
+                flag = false;
+                break;
+            }
+            if (flag) {
+                CustomerModel cus = new CustomerModel(firstname, lastname, username, password, email, phone);
+                addCustomer(cus);
+                registrationMessageLabel.setText("Registration was a success!");
+                break;
+            }
         }
-    if (!password.equals(confirmPassword)) {
-        registrationMessageLabel.setText("Password does not match");
-        flag = false;
-        break;
-    }
-    if (flag) {
-        CustomerModel cus = new CustomerModel(firstname, lastname, username, password, email, phone);
-        addCustomer(cus);
-        registrationMessageLabel.setText("Registration was a success!");
-        break;
-    }
-}
     }
 
     public void closeButtonOnAction(ActionEvent event) {

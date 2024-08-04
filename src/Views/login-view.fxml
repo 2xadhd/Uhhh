@@ -10,7 +10,7 @@
    <children>
       <TextField fx:id="usernameField" layoutX="116.0" layoutY="165.0" prefHeight="26.0" prefWidth="173.0" promptText="Username" />
       <TextField fx:id="passwordField" layoutX="116.0" layoutY="232.0" prefHeight="26.0" prefWidth="173.0" promptText="Password" />
-      <Button layoutX="71.0" layoutY="311.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="265.0" style="-fx-background-color: #E96151;" text="Log in">
+      <Button layoutX="71.0" layoutY="311.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="265.0" style="-fx-background-color: #E96151;" text="Log in" onAction="#onHelloButtonClick">
          <font>
             <Font size="16.0" />
          </font>
@@ -32,7 +32,7 @@
       </ImageView>
       <Text layoutX="120.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text layoutX="121.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <Button layoutX="72.0" layoutY="358.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="31.0" prefWidth="265.0" style="-fx-background-color: #E96151;" text="Cancel">
+      <Button layoutX="72.0" layoutY="358.0" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="31.0" prefWidth="265.0" style="-fx-background-color: #E96151;" text="Cancel">
          <font>
             <Font size="16.0" />
          </font>

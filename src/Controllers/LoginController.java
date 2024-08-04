@@ -3,12 +3,16 @@ package Controllers;
 import Views.RegistrationView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class LoginController {
     @FXML
@@ -16,34 +20,61 @@ public class LoginController {
     @FXML
     private TextField passwordField;
     @FXML
-    private Label welcomeText;
-    private Object StateStyle;
+
+
+    private Map<String, String> users = new HashMap<>();
+
+    public LoginController() {
+        loadUsersFromFile("src/database/Customer.txt");
+        loadUsersFromFile("src/database/Manager.txt");
+    }
+
+    private void loadUsersFromFile(String filePath) {
+        File file = new File(filePath);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                if (data.length >= 2) {
+                    String username = data[0].trim();
+                    String password = data[1].trim();
+                    users.put(username, password);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    protected void onHelloButtonClick() {
+    private void onHelloButtonClick() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (Controllers.Authenticator.authenticate(username, password)) {
-            welcomeText.setText("Welcome, " + username + "!");
+        if (authenticate(username, password)) {
+            System.out.println("Login successful for user: " + username);
         } else {
-            welcomeText.setText("Invalid credentials. Please try again.");
+            System.out.println("Invalid credentials for user: " + username);
         }
+    }
 
-            }
-        public void onRegisterMouseClick(ActionEvent event) {
-            try {
-                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.close();
-                Parent root = FXMLLoader.load(getClass().getResource("/Views/register.fxml"));
-                Stage registerStage = new Stage();
-                RegistrationView register = new RegistrationView();
-                register.start(stage);
+    private boolean authenticate(String username, String password) {
+        return users.containsKey(username) && users.get(username).equals(password);
+    }
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    @FXML
+    private void onRegisterMouseClick(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            RegistrationView register = new RegistrationView();
+            register.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-
+    @FXML
+    private void onCancelButtonClick(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
 }
-
