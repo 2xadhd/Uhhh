@@ -111,14 +111,14 @@ public class RegisterController implements Initializable {
             }
         }
     }
-
+    // when the user clicks close button
     public void closeButtonOnAction(ActionEvent event) {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
             Stage loginStage = new Stage();
             LoginView login = new LoginView();
-            login.start(stage);
+            login.start(stage); //
 
         } catch (Exception e) {
             e.printStackTrace();
