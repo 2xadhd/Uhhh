@@ -1,4 +1,4 @@
-package com.example.register;
+package Views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,13 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginApplication extends Application {
+public class LoginView extends Application {
     private static Stage primaryStage;
 
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 473);
         stage.setTitle("Welcome to our Airlines!");
         stage.setScene(scene);
@@ -21,7 +21,7 @@ public class LoginApplication extends Application {
     }
 
     public static void switchToFlightSearch() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("flight-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("flight-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flight Search");

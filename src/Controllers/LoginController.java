@@ -1,8 +1,10 @@
-package com.example.register;
+package Controllers;
 
+import Views.LoginView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
 
 public class LoginController {
@@ -33,7 +35,7 @@ public class LoginController {
 
         if (isValidLogin(username, password)) {
             // If login is successful, switch to flight search view
-            LoginApplication.switchToFlightSearch();
+            LoginView.switchToFlightSearch();
         } else {
             System.out.println("Invalid login");
         }

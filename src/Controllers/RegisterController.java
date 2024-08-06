@@ -56,7 +56,7 @@ public class RegisterController implements Initializable {
         File userImageFile = new File("Resources/account_logo.png");
         Image userImage = new Image(userImageFile.toURI().toString());
         userImageView.setImage(userImage);
-        String path = new File("src/Database/Customer.txt").getAbsolutePath();
+        String path = new File("src/Database/customer.txt").getAbsolutePath();
         File file = new File(path);
         Scanner sc;
         try {
@@ -127,7 +127,7 @@ public class RegisterController implements Initializable {
     }
 
     public void addCustomer(CustomerModel cus) throws IOException {
-        String path = new File("src/Database/Customer.txt").getAbsolutePath();
+        String path = new File("src/Database/customer.txt").getAbsolutePath();
         File file = new File(path);
         FileWriter fr = new FileWriter(file, true);
         BufferedWriter br = new BufferedWriter(fr);
