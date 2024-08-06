@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ManagerMainPage">
+   <children>
+      <AnchorPane prefHeight="72.0" prefWidth="394.0" style="-fx-background-color: #E96151;">
+         <children>
+            <Text fx:id="MainPageText" layoutX="87.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Manager Main Page" wrappingWidth="219.18399047851562">
+               <font>
+                  <Font name="Apple SD Gothic Neo Regular" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Hyperlink fx:id="ReturntoLoginHyper" layoutX="6.0" layoutY="367.0" text="Return to login" textFill="#105ffcf2">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="SignOutHyper" layoutX="331.0" layoutY="367.0" prefHeight="23.0" prefWidth="56.0" text="Sign Out" textFill="#105ffcf2">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+         </font>
+      </Hyperlink>
+      <ToggleButton fx:id="ReservationButton" layoutX="102.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Reservations" />
+      <ToggleButton fx:id="ReportButton" layoutX="101.0" layoutY="221.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Run a Report" />
+      <ToggleButton fx:id="CustomerButton" layoutX="104.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Customers" />
+      <ToggleButton fx:id="ManagerButton" layoutX="104.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Managers" />
+      <Label fx:id="WelcomeLabel" layoutX="14.0" layoutY="79.0" text="Welcome">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="Menu" layoutX="174.0" layoutY="125.0" mnemonicParsing="false" text="Menu" />
+   </children>
+</AnchorPane>
