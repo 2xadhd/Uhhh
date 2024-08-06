@@ -10,17 +10,16 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ManagerMainPage extends Application {
+    private static Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("manager-mainpage.fxml"));
-            Stage managerStage = new Stage();
-            managerStage.initStyle(StageStyle.UNDECORATED);
-            managerStage.setScene(new Scene(root, 394, 392));
-            managerStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            primaryStage = stage;
+            FXMLLoader fxmlLoader = new FXMLLoader(ManagerMainPage.class.getResource("manager-mainpage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 394, 392);
+            stage.setScene(scene);
+            stage.show();
         }
+    public static void main(String[] args) {
+        launch();
     }
 }
