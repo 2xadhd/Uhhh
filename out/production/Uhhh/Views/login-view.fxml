@@ -28,7 +28,7 @@
          <children>
             <ImageView fitHeight="62.0" fitWidth="64.0" layoutX="18.0" layoutY="31.0">
                <image>
-                  <Image url="@../../../../../../../account_logo.png" />
+                  <Image url="@../Resources/account_logo.png" />
                </image>
             </ImageView>
          </children></Pane>

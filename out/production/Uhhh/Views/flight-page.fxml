@@ -3,34 +3,49 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.register.FlightController">
+<AnchorPane prefHeight="639.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FlightController">
    <children>
-      <Pane layoutY="-4.0" prefHeight="90.0" prefWidth="601.0" style="-fx-background-color: #E96151;">
+      <Pane layoutY="-4.0" prefHeight="90.0" prefWidth="692.0" style="-fx-background-color: #E96151;">
          <children>
-            <Text layoutX="252.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight">
+            <Text layoutX="294.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight">
                <font>
                   <Font size="42.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <TextField fx:id="fromField" layoutX="153.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" promptText="From" />
-      <TextField fx:id="toField" layoutX="313.0" layoutY="160.0" prefHeight="26.0" prefWidth="135.0" promptText="To" />
-      <DatePicker fx:id="departDatePicker" layoutX="153.0" layoutY="200.0" prefHeight="27.0" prefWidth="135.0" promptText="Depart Date" />
-      <DatePicker fx:id="returnDatePicker" layoutX="313.0" layoutY="200.0" prefHeight="27.0" prefWidth="135.0" promptText="Return Date" />
-      <Button fx:id="searchFlightsButton" layoutX="175.0" layoutY="249.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="251.0" style="-fx-background-color: #E96151;" text="Search Flights" />
+      <TextField fx:id="fromField" layoutX="195.0" layoutY="448.0" prefHeight="26.0" prefWidth="135.0" promptText="From" />
+      <TextField fx:id="toField" layoutX="355.0" layoutY="448.0" prefHeight="26.0" prefWidth="135.0" promptText="To" />
+      <DatePicker fx:id="departDatePicker" layoutX="195.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Depart Date" />
+      <DatePicker fx:id="returnDatePicker" layoutX="355.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Return Date" />
+      <Button fx:id="searchFlightsButton" layoutX="217.0" layoutY="537.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="251.0" style="-fx-background-color: #E96151;" text="Search Flights" />
       <Text fx:id="flightsText" layoutX="150.0" layoutY="230.0" />
-      <Hyperlink fx:id="returnToLoginLink" layoutX="14.0" layoutY="363.0" text="Return to Login" />
-      <Text layoutX="153.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a flight:">
+      <Hyperlink fx:id="returnToLoginLink" layoutX="14.0" layoutY="602.0" text="Return to Main " />
+      <Text layoutX="195.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a flight:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
+      <TableView fx:id="tableView" layoutX="18.0" layoutY="123.0" prefHeight="264.0" prefWidth="648.0">
+        <columns>
+          <TableColumn fx:id="tableID" prefWidth="49.0" text="ID" />
+          <TableColumn fx:id="tableSeat" prefWidth="53.0" text="Seats" />
+            <TableColumn fx:id="tableDepart" prefWidth="96.0" text="Depart" />
+            <TableColumn fx:id="tableArrive" prefWidth="102.0" text="Arrive" />
+            <TableColumn fx:id="tableDepartTime" prefWidth="107.0" text="Depart Time" />
+            <TableColumn fx:id="tableArriveTime" prefWidth="100.0" text="Arrive Time" />
+            <TableColumn fx:id="tableTerminal" prefWidth="63.0" text="Terminal" />
+            <TableColumn fx:id="tablePrice" prefWidth="77.0" text="Price" />
+        </columns>
+      </TableView>
+      <Hyperlink layoutX="611.0" layoutY="602.0" text="Sign Out" />
    </children>
 </AnchorPane>
