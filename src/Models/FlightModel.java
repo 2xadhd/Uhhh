@@ -29,6 +29,17 @@ public class FlightModel {
         this.price = price;
     }
 
+    public FlightModel() {
+        this.flightID = null;
+        this.totalSeat = 0;
+        this.depart = null;
+        this.arrive = null;
+        this.departTime = null;
+        this.arriveTime = null;
+        this.terminal = null;
+        this.price = 0;
+    }
+
     public String getFlightID() {
         return flightID;
     }
