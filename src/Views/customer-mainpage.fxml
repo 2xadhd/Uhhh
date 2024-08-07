@@ -33,10 +33,10 @@
         <Hyperlink fx:id="SignOutHyper" layoutX="420.0" layoutY="439.0" text="Sign out" />
         <TableView fx:id="table" layoutX="22.0" layoutY="168.0" prefHeight="241.0" prefWidth="434.0">
             <columns>
-                <TableColumn fx:id="ReservationColumn" prefWidth="102.0" text="reservation" />
-                <TableColumn fx:id="WheretoWhereColumn" prefWidth="130.0" text="where to where" />
-                <TableColumn fx:id="WhentoWhenColumn" prefWidth="120.0" text="when to when" />
-                <TableColumn fx:id="PriceColumn" prefWidth="81.0" text="price" />
+                <TableColumn fx:id="reservationColumn" prefWidth="102.0" text="reservation" />
+                <TableColumn fx:id="wheretoWhereColumn" prefWidth="130.0" text="where to where" />
+                <TableColumn fx:id="whentoWhenColumn" prefWidth="120.0" text="when to when" />
+                <TableColumn fx:id="priceColumn" prefWidth="81.0" text="price" />
             </columns>
         </TableView>
     </children>

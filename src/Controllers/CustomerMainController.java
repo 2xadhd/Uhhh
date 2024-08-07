@@ -1,12 +1,17 @@
 package Controllers;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
-public class CustomerMainController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CustomerMainController implements Initializable {
     @FXML
     private Button ListofReservationsButton;
     @FXML
@@ -33,6 +38,11 @@ public class CustomerMainController {
         String whentowhen = WhentoWhenColumn.getText();
         String wheretowhere =WheretoWhereColumn.getText();
         String welcome = welcomeText.getText();
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }
