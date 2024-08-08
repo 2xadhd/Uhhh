@@ -39,7 +39,7 @@
             <TableColumn fx:id="tablePrice" prefWidth="77.0" text="Price" />
         </columns>
       </TableView>
-      <Hyperlink layoutX="611.0" layoutY="602.0" text="Sign Out" />
+      <Hyperlink fx:id="signOutButton" layoutX="611.0" layoutY="602.0" onAction="#onSignOutButtonClick" text="Sign Out" />
       <Button fx:id="addButton" layoutX="26.0" layoutY="395.0" mnemonicParsing="false" onAction="#onAddButtonClick" style="-fx-background-color: #E96151;" text="Add" />
       <Button fx:id="deleteButton" layoutX="71.0" layoutY="395.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" style="-fx-background-color: #E96151;" text="Delete" />
    </children>

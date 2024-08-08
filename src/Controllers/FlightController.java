@@ -2,28 +2,24 @@ package Controllers;
 
 import Models.FlightModel;
 import Views.FlightView;
+import Views.LoginView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
+import java.io.*;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 
-public class FlightController  implements Initializable  {
+public class FlightController {
 
     @FXML
     private DatePicker departDatePicker;
@@ -52,20 +48,31 @@ public class FlightController  implements Initializable  {
     @FXML
     private Button deleteButton;
 
+    @FXML
+    private Hyperlink signOutButton;
 
-    @FXML private TableView<FlightModel> tableView;
-    @FXML private TableColumn<FlightModel, String> tableID;
-    @FXML private TableColumn<FlightModel, String> tableSeat;
-    @FXML private TableColumn<FlightModel, String> tableDepart;
-    @FXML private TableColumn<FlightModel, String> tableArrive;
-    @FXML private TableColumn<FlightModel, String> tableDepartTime;
-    @FXML private TableColumn<FlightModel, String> tableArriveTime;
-    @FXML private TableColumn<FlightModel, String> tableTerminal;
-    @FXML private TableColumn<FlightModel, String> tablePrice;
+
+    @FXML
+    private TableView<FlightModel> tableView;
+    @FXML
+    private TableColumn<FlightModel, String> tableID;
+    @FXML
+    private TableColumn<FlightModel, String> tableSeat;
+    @FXML
+    private TableColumn<FlightModel, String> tableDepart;
+    @FXML
+    private TableColumn<FlightModel, String> tableArrive;
+    @FXML
+    private TableColumn<FlightModel, String> tableDepartTime;
+    @FXML
+    private TableColumn<FlightModel, String> tableArriveTime;
+    @FXML
+    private TableColumn<FlightModel, String> tableTerminal;
+    @FXML
+    private TableColumn<FlightModel, String> tablePrice;
     ArrayList<FlightModel> flightList = new ArrayList<FlightModel>();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
 
         tableID.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("flightID"));
         tableSeat.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("totalSeat"));
@@ -79,7 +86,7 @@ public class FlightController  implements Initializable  {
 
     }
 
-    private ArrayList<FlightModel> parseFlightList(){
+    private ArrayList<FlightModel> parseFlightList() {
         String path = new File("src/Database/flight.txt").getAbsolutePath();
         String input;
         File file = new File(path);
@@ -115,15 +122,13 @@ public class FlightController  implements Initializable  {
         LocalDate departDate = departDatePicker.getValue();
         LocalDate arriveDate = returnDatePicker.getValue();
         ArrayList<FlightModel> searchList = new ArrayList<FlightModel>();
-        for (FlightModel fl : flightList)
-        {
+        for (FlightModel fl : flightList) {
             String convertDepartDate = fl.getDepartTime();
             String convertArriveDate = fl.getArriveTime();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");// Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
             LocalDate dDate = LocalDate.parse(convertDepartDate, formatter);
             LocalDate aDate = LocalDate.parse(convertArriveDate, formatter);
-            if (fl.getDepart().contains(fr) && fl.getArrive().contains(to) && dDate.isAfter(departDate) && aDate.isBefore(arriveDate))
-            {
+            if (fl.getDepart().contains(fr) && fl.getArrive().contains(to) && dDate.isAfter(departDate) && aDate.isBefore(arriveDate)) {
                 searchList.add(fl);
             }
         }
@@ -152,7 +157,35 @@ public class FlightController  implements Initializable  {
         }
     }
 
-    public void onDeleteButtonClick(ActionEvent actionEvent) {
-
+    public void onDeleteButtonClick(ActionEvent event) throws IOException {
+        FlightModel fl = tableView.getSelectionModel().getSelectedItem();
+        deleteFlight(fl);
+        initialize();
     }
-}
+
+    public void onSignOutButtonClick(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            Stage loginStage = new Stage();
+            LoginView loginView = new LoginView();
+            loginView.start(loginStage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteFlight(FlightModel fl) throws IOException {
+        String path = new File("src/Database/flight.txt").getAbsolutePath();
+        File file = new File(path);
+        FileWriter fr = new FileWriter(file, false);
+        BufferedWriter br = new BufferedWriter(fr);
+        flightList.removeIf(flightModel -> flightModel.equals(fl));
+        for (FlightModel flight : flightList) {
+                br.write(flight.getFlightID() + "," + flight.getTotalSeat() + "," + flight.getDepart() + "," + flight.getArrive() + "," + flight.getDepartTime() + "," + flight.getArriveTime() + "," + flight.getTerminal() + "," + flight.getPrice() + "\n");
+            }
+        flightList.clear();
+        br.close();
+        fr.close();
+    }}
