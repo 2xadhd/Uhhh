@@ -118,7 +118,7 @@ public class RegisterController implements Initializable {
             stage.close();
             Stage loginStage = new Stage();
             LoginView login = new LoginView();
-            login.start(stage); //
+            login.start(loginStage);
 
         } catch (Exception e) {
             e.printStackTrace();

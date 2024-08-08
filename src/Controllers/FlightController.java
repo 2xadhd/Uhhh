@@ -1,21 +1,26 @@
 package Controllers;
 
 import Models.FlightModel;
+import Views.FlightView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 
 
 public class FlightController  implements Initializable  {
@@ -41,6 +46,13 @@ public class FlightController  implements Initializable  {
     @FXML
     private TextField toField;
 
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button deleteButton;
+
+
     @FXML private TableView<FlightModel> tableView;
     @FXML private TableColumn<FlightModel, String> tableID;
     @FXML private TableColumn<FlightModel, String> tableSeat;
@@ -54,6 +66,7 @@ public class FlightController  implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         tableID.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("flightID"));
         tableSeat.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("totalSeat"));
         tableDepart.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("Depart"));
@@ -70,7 +83,7 @@ public class FlightController  implements Initializable  {
         String path = new File("src/Database/flight.txt").getAbsolutePath();
         String input;
         File file = new File(path);
-        Scanner sc;
+        Scanner sc = null;
         try {
             sc = new Scanner(file);
             while (sc.hasNextLine()) {
@@ -92,11 +105,54 @@ public class FlightController  implements Initializable  {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        sc.close();
         return flightList;
     }
 
-    public void onSearchButtonClick(ActionEvent event) throws IOException {
+    public void onSearchButtonClick(ActionEvent event) throws IOException, ParseException {
+        String to = toField.getText();
+        String fr = fromField.getText();
+        LocalDate departDate = departDatePicker.getValue();
+        LocalDate arriveDate = returnDatePicker.getValue();
+        ArrayList<FlightModel> searchList = new ArrayList<FlightModel>();
+        for (FlightModel fl : flightList)
+        {
+            String convertDepartDate = fl.getDepartTime();
+            String convertArriveDate = fl.getArriveTime();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");// Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
+            LocalDate dDate = LocalDate.parse(convertDepartDate, formatter);
+            LocalDate aDate = LocalDate.parse(convertArriveDate, formatter);
+            if (fl.getDepart().contains(fr) && fl.getArrive().contains(to) && dDate.isAfter(departDate) && aDate.isBefore(arriveDate))
+            {
+                searchList.add(fl);
+            }
+        }
+        tableView.getItems().clear();
+        tableID.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("flightID"));
+        tableSeat.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("totalSeat"));
+        tableDepart.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("Depart"));
+        tableArrive.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("Arrive"));
+        tableDepartTime.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("DepartTime"));
+        tableArriveTime.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("ArriveTime"));
+        tableTerminal.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("Terminal"));
+        tablePrice.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("Price"));
+        tableView.getItems().setAll(searchList);
 
     }
 
+    public void onAddButtonClick(ActionEvent event) throws IOException, ParseException {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            Stage popupStage = new Stage();
+            FlightView.popupAdd(popupStage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onDeleteButtonClick(ActionEvent actionEvent) {
+
+    }
 }

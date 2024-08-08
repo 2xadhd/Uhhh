@@ -20,5 +20,17 @@ public class FlightView extends Application {
         stage.show();
     }
 
+    public static void popupAdd(Stage stage) throws IOException {
+        Stage stagePopup = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(FlightView.class.getResource("flight-add.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 451, 466);
+        stagePopup.setScene(scene);
+        stagePopup.show();
+    }
+
+    public static void closeAdd() throws IOException {
+
+    }
+
 }
 
