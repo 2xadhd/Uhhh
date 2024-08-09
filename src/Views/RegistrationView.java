@@ -1,3 +1,8 @@
+/**
+ * @author: Dai/Vi Quach, Deekshitha Chavalla
+ * @version: 1.0
+ * date: 8/1/2024
+ */
 package Views;
 
 import javafx.application.Application;
@@ -9,7 +14,15 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ * Registration GUI
+ */
 public class RegistrationView extends Application {
+    /**
+     * Main Panel for Registration
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
 

@@ -1,13 +1,15 @@
+/**
+ *  @author: Dai/Vi Quach
+ *  @version: 1.0
+ *  date: 08/08/2024
+ */
 package Controllers;
 
 import Models.CustomerModel;
 import Views.LoginView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -17,13 +19,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class RegisterController implements Initializable {
+/**
+ * Controls the inner working of the Register GUI
+ */
+public class RegisterController {
     String input;
     ArrayList<CustomerModel> cusList = new ArrayList<CustomerModel>();
     @FXML
@@ -51,8 +54,10 @@ public class RegisterController implements Initializable {
     @FXML
     private TextField phonenumberTextField;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    /**
+     * automatically gets the list of all customers for the purpose of validation
+     */
+    public void initialize() {
         File userImageFile = new File("Resources/account_logo.png");
         Image userImage = new Image(userImageFile.toURI().toString());
         userImageView.setImage(userImage);
@@ -80,6 +85,12 @@ public class RegisterController implements Initializable {
         }
     }
 
+    /**
+     * Runs when user clicks on the register button.
+     * Mostly does validation.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void registrationButtonOnAction(ActionEvent event) throws IOException {
         boolean flag = true;
@@ -91,18 +102,31 @@ public class RegisterController implements Initializable {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
+        /**
+         * validation goes here
+         */
         while (flag) {
+            /**
+             * check if username is taken
+             */
             for (CustomerModel customerModel : cusList)
                 if (Objects.equals(username, customerModel.getUserID())) {
                     registrationMessageLabel.setText("Username has been taken!");
                     flag = false;
                     break;
                 }
+            /**
+             * check if password matches confirmPassword field
+             */
             if (!password.equals(confirmPassword)) {
                 registrationMessageLabel.setText("Password does not match");
                 flag = false;
                 break;
             }
+
+            /**
+             * if nothing is out of place, add Customer to our database
+             */
             if (flag) {
                 CustomerModel cus = new CustomerModel(firstname, lastname, username, password, email, phone);
                 addCustomer(cus);
@@ -111,7 +135,12 @@ public class RegisterController implements Initializable {
             }
         }
     }
-    // when the user clicks close button
+
+    /**
+     * Runs when the customer click on the close button
+     * will close the register panel and reopen login panel
+     * @param event
+     */
     public void closeButtonOnAction(ActionEvent event) {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -126,6 +155,11 @@ public class RegisterController implements Initializable {
 
     }
 
+    /**
+     * writes the newly added customer into our database
+     * @param cus
+     * @throws IOException
+     */
     public void addCustomer(CustomerModel cus) throws IOException {
         String path = new File("src/Database/customer.txt").getAbsolutePath();
         File file = new File(path);
@@ -138,16 +172,5 @@ public class RegisterController implements Initializable {
         fr.close();
     }
 
-    public void returnToLogin(ActionEvent event) {
-        try {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Views/login-view.fxml")));
-            Stage loginStage = new Stage();
-            LoginView login = new LoginView();
-            login.start(stage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }

@@ -12,99 +12,99 @@
             <ImageView fx:id="userImageView" fitHeight="42.0" fitWidth="69.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@../Resources/image.png" />
             </ImageView>
-            <Label layoutX="75.0" layoutY="22.0" prefHeight="29.0" prefWidth="226.0" text="User Registration">
+            <Label layoutX="100.0" layoutY="19.0" prefHeight="29.0" prefWidth="226.0" text="User Registration">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="lastnameTextField" layoutX="14.0" layoutY="149.0" prefHeight="25.0" prefWidth="336.0" promptText="Last name">
+      <TextField fx:id="lastnameTextField" layoutX="35.0" layoutY="146.0" prefHeight="25.0" prefWidth="336.0" promptText="Last name">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="firstnameTextField" layoutX="14.0" layoutY="102.0" prefHeight="25.0" prefWidth="336.0" promptText="First name">
+      <TextField fx:id="firstnameTextField" layoutX="35.0" layoutY="99.0" prefHeight="25.0" prefWidth="336.0" promptText="First name">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="usernameTextField" layoutX="14.0" layoutY="299.0" prefHeight="25.0" prefWidth="336.0" promptText="Username">
+      <TextField fx:id="usernameTextField" layoutX="35.0" layoutY="296.0" prefHeight="25.0" prefWidth="336.0" promptText="Username">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="14.0" layoutY="353.0" prefHeight="25.0" prefWidth="336.0" promptText="Password">
+      <PasswordField fx:id="passwordField" layoutX="35.0" layoutY="350.0" prefHeight="25.0" prefWidth="336.0" promptText="Password">
          <font>
             <Font size="12.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="confirmPasswordField" layoutX="14.0" layoutY="407.0" prefHeight="25.0" prefWidth="336.0" promptText="Confirm Password">
+      <PasswordField fx:id="confirmPasswordField" layoutX="35.0" layoutY="404.0" prefHeight="25.0" prefWidth="336.0" promptText="Confirm Password">
          <font>
             <Font size="12.0" />
          </font>
       </PasswordField>
-      <Button fx:id="registerButton" layoutX="74.0" layoutY="456.0" mnemonicParsing="false" onAction="#registrationButtonOnAction" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Register" textFill="#fcf6f6">
+      <Button fx:id="registerButton" layoutX="51.0" layoutY="456.0" mnemonicParsing="false" onAction="#registrationButtonOnAction" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Register" textFill="#fcf6f6">
          <font>
             <Font size="12.0" />
          </font>
       </Button>
-      <Button fx:id="closeButton" layoutX="75.0" layoutY="495.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Close" textFill="#fcf6f6">
+      <Button fx:id="closeButton" layoutX="52.0" layoutY="495.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="26.0" prefWidth="299.0" style="-fx-background-color: #E96151;" text="Close" textFill="#fcf6f6">
          <font>
             <Font size="12.0" />
          </font>
       </Button>
-      <Label layoutX="16.0" layoutY="84.0" text="First name">
+      <Label layoutX="37.0" layoutY="81.0" text="First name">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="133.0" text="Last name">
+      <Label layoutX="37.0" layoutY="130.0" text="Last name">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="283.0" text="Username">
+      <Label layoutX="37.0" layoutY="280.0" text="Username">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <Label graphicTextGap="3.0" layoutX="17.0" layoutY="337.0" text="Password">
+      <Label graphicTextGap="3.0" layoutX="38.0" layoutY="334.0" text="Password">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="confirmPasswordLabel" layoutX="19.0" layoutY="391.0" text="Confirm Password">
+      <Label fx:id="confirmPasswordLabel" layoutX="40.0" layoutY="388.0" text="Confirm Password">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="registrationMessageLabel" layoutX="162.0" layoutY="75.0" prefHeight="19.0" prefWidth="0.0" textFill="#5072a8">
+      <Label fx:id="registrationMessageLabel" layoutX="183.0" layoutY="72.0" prefHeight="19.0" prefWidth="0.0" textFill="#5072a8">
          <font>
             <Font name="Apple SD Gothic Neo Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="125.0" layoutY="291.0" prefHeight="5.0" prefWidth="169.0" textFill="#b23226">
+      <Label layoutX="146.0" layoutY="288.0" prefHeight="5.0" prefWidth="169.0" textFill="#b23226">
          <font>
             <Font name="Apple SD Gothic Neo Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="15.0" layoutY="180.0" text="Emai Address">
+      <Label layoutX="36.0" layoutY="177.0" text="Emai Address">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="emailTextField" layoutX="14.0" layoutY="196.0" prefHeight="25.0" prefWidth="336.0" promptText="Email">
+      <TextField fx:id="emailTextField" layoutX="35.0" layoutY="193.0" prefHeight="25.0" prefWidth="336.0" promptText="Email">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="phonenumberTextField" layoutX="14.0" layoutY="245.0" prefHeight="25.0" prefWidth="336.0" promptText="Phone number">
+      <TextField fx:id="phonenumberTextField" layoutX="35.0" layoutY="242.0" prefHeight="25.0" prefWidth="336.0" promptText="Phone number">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="12.0" layoutY="229.0" text=" Phone number">
+      <Label layoutX="33.0" layoutY="226.0" text=" Phone number">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="12.0" />
          </font>

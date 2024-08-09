@@ -1,5 +1,9 @@
+/**
+ *  @author: Dai/Vi Quach
+ *  @version: 1.0
+ *  date: 08/08/2024
+ */
 package Controllers;
-
 import Models.FlightModel;
 import Views.FlightView;
 import Views.LoginView;
@@ -10,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -18,6 +21,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main Controller for the Flight Management Page (Only available to Managers). This is where
+ * the program populates the TableView, do a search, add, delete.
+ */
 
 public class FlightController {
 
@@ -50,7 +57,8 @@ public class FlightController {
 
     @FXML
     private Hyperlink signOutButton;
-
+    @FXML
+    private Button refreshButton;
 
     @FXML
     private TableView<FlightModel> tableView;
@@ -72,6 +80,9 @@ public class FlightController {
     private TableColumn<FlightModel, String> tablePrice;
     ArrayList<FlightModel> flightList = new ArrayList<FlightModel>();
 
+    /**
+     * Automatically set up our list of flights.
+     */
     public void initialize() {
 
         tableID.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("flightID"));
@@ -86,6 +97,10 @@ public class FlightController {
 
     }
 
+    /**
+     * Gets the list of ALL flights from the text database and returns it as an ArrayList
+     * @return ArrayList
+     */
     private ArrayList<FlightModel> parseFlightList() {
         String path = new File("src/Database/flight.txt").getAbsolutePath();
         String input;
@@ -116,6 +131,13 @@ public class FlightController {
         return flightList;
     }
 
+    /**
+     * Runs when the user clicks the search flights button.
+     * @param event
+     * @throws IOException
+     * @throws ParseException
+     */
+
     public void onSearchButtonClick(ActionEvent event) throws IOException, ParseException {
         String to = toField.getText();
         String fr = fromField.getText();
@@ -145,6 +167,13 @@ public class FlightController {
 
     }
 
+    /**
+     * Runs when the user clicks on the Add button.
+     * It will open a popup add panel, which is controlled by FlightAddController
+     * @param event
+     * @throws IOException
+     * @throws ParseException
+     */
     public void onAddButtonClick(ActionEvent event) throws IOException, ParseException {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -157,12 +186,24 @@ public class FlightController {
         }
     }
 
+    /**
+     * Runs when the user clicks the delete button.
+     * It requires the user to highlight a row on the flight table first,
+     * otherwise it does nothing.
+     * @param event
+     * @throws IOException
+     */
     public void onDeleteButtonClick(ActionEvent event) throws IOException {
         FlightModel fl = tableView.getSelectionModel().getSelectedItem();
         deleteFlight(fl);
         initialize();
     }
 
+    /**
+     * Runs when the user clisk the sign out button.
+     * It will return the user back to the login page.
+     * @param event
+     */
     public void onSignOutButtonClick(ActionEvent event) {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -176,16 +217,57 @@ public class FlightController {
         }
     }
 
+    /**
+     * Assists onDeleteButtonClick to delete a flight.
+     * Using a text database this method is really dangerous
+     * as it has to delete the whole file and rewrote it everytime
+     * as there is no way to only edit a line in a file.
+     * @param fl
+     * @throws IOException
+     */
     public void deleteFlight(FlightModel fl) throws IOException {
         String path = new File("src/Database/flight.txt").getAbsolutePath();
         File file = new File(path);
+        flightList.removeIf(flightModel -> flightModel.equals(fl));
         FileWriter fr = new FileWriter(file, false);
         BufferedWriter br = new BufferedWriter(fr);
-        flightList.removeIf(flightModel -> flightModel.equals(fl));
         for (FlightModel flight : flightList) {
                 br.write(flight.getFlightID() + "," + flight.getTotalSeat() + "," + flight.getDepart() + "," + flight.getArrive() + "," + flight.getDepartTime() + "," + flight.getArriveTime() + "," + flight.getTerminal() + "," + flight.getPrice() + "\n");
             }
         flightList.clear();
         br.close();
         fr.close();
-    }}
+    }
+
+    /**
+     * Currently obsolete. Will update in the next increment.
+     * Runs when the user clicks the edit button.
+     * @param event
+     */
+    public void onEditButtonClick(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            Stage popupStage = new Stage();
+            FlightView.popupEdit(popupStage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Runs when the user clicks the refresh button to refresh the table.
+     * Usually done after a search action
+     * @param event
+     */
+    public void onRefreshButtonClick (ActionEvent event)
+    {
+        flightList.clear();
+        initialize();
+    }
+
+}
+
+
+
