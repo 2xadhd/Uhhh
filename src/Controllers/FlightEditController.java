@@ -15,9 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -116,15 +113,19 @@ public class FlightEditController {
         }
     }
 
-    public void editFlight(FlightModel fl) throws IOException {
-        String path = new File("src/Database/flight.txt").getAbsolutePath();
-        File file = new File(path);
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter br = new BufferedWriter(fr);
-        br.newLine();
-        br.write(fl.getFlightID() + "," + fl.getTotalSeat() + "," + fl.getDepart() + "," + fl.getArrive() + "," + fl.getDepartTime() + "," + fl.getArriveTime() + "," + fl.getTerminal() + "," + fl.getPrice());
-        br.close();
-        fr.close();
+    public void editFlight(FlightModel fl) throws IOException {}}
+         /**   String path = new File("src/Database/flight.txt").getAbsolutePath();
+            File file = new File(path);
+            flightList.removeIf(flightModel -> flightModel.equals(fl));
+            FileWriter fr = new FileWriter(file, false);
+            BufferedWriter br = new BufferedWriter(fr);
+            for (FlightModel flight : flightList) {
+                br.write(flight.getFlightID() + "," + flight.getTotalSeat() + "," + flight.getDepart() + "," + flight.getArrive() + "," + flight.getDepartTime() + "," + flight.getArriveTime() + "," + flight.getTerminal() + "," + flight.getPrice() + "\n");
+            }
+            flightList.clear();
+            br.close();
+            fr.close();
+        }
     }
-}
 
+*/

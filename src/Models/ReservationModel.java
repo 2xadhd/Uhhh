@@ -64,6 +64,21 @@ public class ReservationModel {
         this.expDate = expDate;
     }
 
+    public ReservationModel() {
+        this.reservationID = "";
+        this.username = "";
+        this.seatNum = 0;
+        this.seatNum2 = 0;
+        this.price = 0;
+        this.departTime = "";
+        this.returnTime = "";
+        this.flightID1 = "";
+        this.flightID2 = "";
+        this.round = false;
+        this.cardNumber = "";
+        this.expDate = "";
+    }
+
     /**
      * ID getter
      * @return

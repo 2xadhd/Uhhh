@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReservationManagerAddController">
+   <children>
+      <Pane layoutX="-2.0" prefHeight="56.0" prefWidth="606.0" style="-fx-background-color: #E96151;">
+         <children>
+            <Text layoutX="26.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Text>
+            <Text layoutX="239.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Manager View)">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text layoutX="26.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Pane layoutX="13.0" layoutY="71.0" prefHeight="312.0" prefWidth="578.0" style="-fx-background-color: #ffe4e1;">
+         <children>
+            <Text layoutX="28.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlightID1:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="27.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlightID2:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="flightID1Field" layoutX="100.0" layoutY="116.0" prefHeight="24.0" prefWidth="128.0" />
+            <TextField fx:id="flightID2Field" layoutX="100.0" layoutY="151.0" prefHeight="24.0" prefWidth="128.0" />
+            <Text layoutX="14.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="usernameField" layoutX="100.0" layoutY="81.0" prefHeight="24.0" prefWidth="128.0" />
+            <Text layoutX="306.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Button layoutX="22.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" onAction="#onAddButtonClick" style="-fx-background-color: #E96151;" text="Add" textFill="WHITE" />
+            <Button layoutX="22.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" onAction="#onCancelButtonClick" style="-fx-background-color: #E96151;" text="Cancel" textFill="WHITE" />
+            <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Reservation">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="281.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="295.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Number:" wrappingWidth="138.21240234375">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="330.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp Date:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="departDateField" editable="false" layoutX="407.0" layoutY="81.0" prefHeight="24.0" prefWidth="128.0" />
+            <TextField fx:id="returnDateField" editable="false" layoutX="407.0" layoutY="116.0" prefHeight="24.0" prefWidth="128.0" />
+            <TextField fx:id="cardNumberField" layoutX="407.0" layoutY="151.0" prefHeight="24.0" prefWidth="128.0" />
+            <TextField fx:id="expDateField" layoutX="407.0" layoutY="187.0" prefHeight="24.0" prefWidth="128.0" />
+            <Text layoutX="353.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price :" wrappingWidth="48.9765625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="priceField" layoutX="407.0" layoutY="225.0" prefHeight="24.0" prefWidth="128.0" />
+            <Label fx:id="errorLabel" layoutX="22.0" layoutY="191.0" prefHeight="40.0" prefWidth="206.0" textFill="#e80000" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

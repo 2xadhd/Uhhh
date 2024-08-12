@@ -21,7 +21,7 @@
       <DatePicker fx:id="returnDatePicker" layoutX="355.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Return Date" />
       <Button fx:id="searchFlightsButton" layoutX="217.0" layoutY="537.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="26.0" prefWidth="251.0" style="-fx-background-color: #E96151;" text="Search Flights" />
       <Text fx:id="flightsText" layoutX="150.0" layoutY="230.0" />
-      <Hyperlink fx:id="returnToLoginLink" layoutX="14.0" layoutY="602.0" text="Return to Main " />
+      <Hyperlink fx:id="returnToLoginLink" layoutX="14.0" layoutY="602.0" onAction="#onMainButtonClick" text="Return to Main " />
       <Text layoutX="195.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a flight:">
          <font>
             <Font size="14.0" />

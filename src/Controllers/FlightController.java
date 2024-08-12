@@ -7,6 +7,7 @@ package Controllers;
 import Models.FlightModel;
 import Views.FlightView;
 import Views.LoginView;
+import Views.ManagerMainPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -267,7 +268,19 @@ public class FlightController {
         initialize();
     }
 
-}
+    public void onMainButtonClick(ActionEvent event) throws IOException{
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            Stage mainStage = new Stage();
+            ManagerMainPage managerMainPage = new ManagerMainPage();
+            managerMainPage.start(mainStage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+}}
 
 
 
