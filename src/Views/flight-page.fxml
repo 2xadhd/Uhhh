@@ -17,8 +17,8 @@
       </Pane>
       <TextField fx:id="fromField" layoutX="195.0" layoutY="448.0" prefHeight="26.0" prefWidth="135.0" promptText="From" />
       <TextField fx:id="toField" layoutX="355.0" layoutY="448.0" prefHeight="26.0" prefWidth="135.0" promptText="To" />
-      <DatePicker fx:id="departDatePicker" layoutX="195.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Depart Date" />
-      <DatePicker fx:id="returnDatePicker" layoutX="355.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Return Date" />
+      <DatePicker fx:id="departDatePicker" editable="false" layoutX="195.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Depart Date" />
+      <DatePicker fx:id="returnDatePicker" editable="false" layoutX="355.0" layoutY="488.0" prefHeight="27.0" prefWidth="135.0" promptText="Return Date" />
       <Button fx:id="searchFlightsButton" layoutX="217.0" layoutY="537.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="26.0" prefWidth="251.0" style="-fx-background-color: #E96151;" text="Search Flights" />
       <Text fx:id="flightsText" layoutX="150.0" layoutY="230.0" />
       <Hyperlink fx:id="returnToLoginLink" layoutX="14.0" layoutY="602.0" onAction="#onMainButtonClick" text="Return to Main " />

@@ -15,9 +15,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 /**
- * Reservation Manager GUI
+ * Reservation Customer GUI
  */
-public class ReservationManagerView extends Application {
+public class ReservationCustomerView extends Application {
     /**
      * Main Panel for Reservation
      * @param stage
@@ -27,10 +27,10 @@ public class ReservationManagerView extends Application {
     public void start(Stage stage) throws IOException {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("manager-reservation-page.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("customer-reservation-page.fxml"));
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 604, 453));
+            registerStage.setScene(new Scene(root, 752, 570));
             registerStage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class ReservationManagerView extends Application {
      */
     public static void popupAdd(Stage stage) throws IOException {
         Stage stagePopup = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(FlightView.class.getResource("add-reservation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FlightView.class.getResource("add-reservation-customer.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stagePopup.setScene(scene);
         stagePopup.show();

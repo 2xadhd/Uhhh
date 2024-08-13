@@ -4,6 +4,7 @@
  *  date: 08/08/2024
  */
 package Controllers;
+
 import Models.FlightModel;
 import Views.FlightView;
 import Views.LoginView;
@@ -15,9 +16,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.*;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -142,13 +145,25 @@ public class FlightController {
     public void onSearchButtonClick(ActionEvent event) throws IOException, ParseException {
         String to = toField.getText();
         String fr = fromField.getText();
-        LocalDate departDate = departDatePicker.getValue();
-        LocalDate arriveDate = returnDatePicker.getValue();
+        LocalDate departDate = null;
+        LocalDate arriveDate = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        if (departDatePicker.getValue()!=null) {
+             departDate = departDatePicker.getValue();
+        }
+        else {
+                departDate = LocalDate.of(1900, Month.JANUARY, 1);
+        }
+        if (returnDatePicker.getValue()!=null) {
+         arriveDate = returnDatePicker.getValue();
+        }
+        else {
+            arriveDate = LocalDate.of(2100, Month.JANUARY, 1);
+        }
         ArrayList<FlightModel> searchList = new ArrayList<FlightModel>();
         for (FlightModel fl : flightList) {
             String convertDepartDate = fl.getDepartTime();
             String convertArriveDate = fl.getArriveTime();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");// Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
             LocalDate dDate = LocalDate.parse(convertDepartDate, formatter);
             LocalDate aDate = LocalDate.parse(convertArriveDate, formatter);
             if (fl.getDepart().contains(fr) && fl.getArrive().contains(to) && dDate.isAfter(departDate) && aDate.isBefore(arriveDate)) {
