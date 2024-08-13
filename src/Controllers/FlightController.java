@@ -283,6 +283,12 @@ public class FlightController {
         initialize();
     }
 
+    /**
+     * Returns user to main page.
+     * Runs when user clicks the cancel button.
+     * @param event
+     * @throws IOException
+     */
     public void onMainButtonClick(ActionEvent event) throws IOException{
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

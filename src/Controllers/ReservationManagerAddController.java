@@ -1,3 +1,7 @@
+/**
+ * @author Dai/V Quach
+ * @version 1.0
+ */
 package Controllers;
 
 import Models.CustomerModel;
@@ -15,11 +19,11 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
+/**
+ * Controls the inner workings of reservation manager add panel
+ */
 public class ReservationManagerAddController {
 
     @FXML
@@ -52,9 +56,15 @@ public class ReservationManagerAddController {
     ArrayList<FlightModel> flightList = new ArrayList<FlightModel>();
     ArrayList<CustomerModel> cusList = new ArrayList<CustomerModel>();
 
+    /**
+     * Initializes the add panel.
+     */
     public void initialize() {
         parseFlightList();
         parseCustomerList();
+        /**
+         * update the departure and arrival date and price when text changes
+         */
         flightID1Field.textProperty().addListener((obs, oldText, newText) -> {
             for (FlightModel fl:flightList)
             {   System.out.println(flightID1Field.getText().trim() + "  " + fl.getFlightID());
@@ -99,7 +109,7 @@ public class ReservationManagerAddController {
 
 
     /**
-     * to get all the flights from the database
+     * Gets all the flights from the database
      * @return
      */
     private void parseFlightList() {
@@ -131,6 +141,9 @@ public class ReservationManagerAddController {
         sc.close();
     }
 
+    /**
+     * Gets all the customers from the database
+     */
     private void parseCustomerList() {
         String path = new File("src/Database/customer.txt").getAbsolutePath();
         String input;
@@ -205,32 +218,31 @@ public class ReservationManagerAddController {
         }
 
 
-        /**
-         *  Date validation (Depart date must be earlier than arrival date)
-         */
         if (departDate.isAfter(arriveDate) || departDate.isEqual(arriveDate)) {
             errorLabel.setText("Departure must be earlier than arrival");
             addFlag = false;
         }
+        Random rand = new Random();
         for (FlightModel fl:flightList)
         {
             if (Objects.equals(fl.getFlightID(), flightID1Field.getText()))
             {
-                seatNum = (int) Math.random()%fl.getTotalSeat();
+
+                seatNum = rand.nextInt(1000)%fl.getTotalSeat();
             }
 
             if (Objects.equals(fl.getFlightID(), flightID2Field.getText()))
             {
-                seatNum2 = (int) Math.random()%fl.getTotalSeat();
+                seatNum2 = rand.nextInt(1000)%fl.getTotalSeat();
             }
 
 
         }
-        if (cardNumberField.getText()=="") {
+        if (Objects.equals(cardNumberField.getText(), "")) {
             errorLabel.setText("Card Number must not be empty");
             addFlag=false;
         }
-        if (expDateField.getText()=="") {
+        if (Objects.equals(expDateField.getText(), "")) {
             errorLabel.setText("Expiration Date must not be empty");
             addFlag=false;
         }
@@ -269,6 +281,11 @@ public class ReservationManagerAddController {
         fr.close();
     }
 
+    /**
+     * Turns off the add panel and returns to reservation page.
+     * runs when the user clicks the cancel button.
+     * @param event
+     */
     public void onCancelButtonClick (ActionEvent event)
     {
         try {

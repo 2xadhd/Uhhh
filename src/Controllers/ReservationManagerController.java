@@ -1,3 +1,7 @@
+/**
+ * @author Dai/V Quach
+ * @version 1.0
+ */
 package Controllers;
 
 import Models.ReservationModel;
@@ -16,6 +20,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Controls the inner workings of Reservation Page for Managers
+ */
 public class ReservationManagerController {
 
     @FXML
@@ -72,7 +79,7 @@ public class ReservationManagerController {
     }
 
     /**
-     * to get all the reservations from the database
+     * get all the reservations from the database
      * @return
      */
     private ArrayList<ReservationModel> parseReservationList() {
@@ -114,6 +121,11 @@ public class ReservationManagerController {
         return reservationList;
     }
 
+    /**
+     * Opens the popup add panel.
+     * runs when user clicks on the add button.
+     * @param event
+     */
     @FXML
     void onAddButtonClick(ActionEvent event) {
         try {
@@ -128,7 +140,11 @@ public class ReservationManagerController {
 
     }
 
-
+    /**
+     * Refreshes the table list.
+     * Runs when the user clicks on the refresh button.
+     * @param event
+     */
     @FXML
     void onRefreshButtonClick(ActionEvent event) {
         reservationList.clear();
@@ -202,6 +218,11 @@ public class ReservationManagerController {
         fr.close();
     }
 
+    /**
+     * Signs the user out.
+     * runs when the user clicks on the Sign Out button.
+     * @param event
+     */
     public void onSignOutButtonClick(ActionEvent event) {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -214,6 +235,13 @@ public class ReservationManagerController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * returns to Main page.
+     * runs when the user clicks on the return to main button.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onMainButtonClick(ActionEvent event) throws IOException{
         try {

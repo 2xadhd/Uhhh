@@ -1,3 +1,7 @@
+/**
+ *  @author Dai/Vi Quach
+ *  @version 1.0
+ */
 package Controllers;
 
 import Models.FlightModel;
@@ -20,6 +24,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Controls the inner workings of Reservation Page for Customers
+ */
 public class ReservationCustomerController {
 
     @FXML
@@ -73,6 +80,10 @@ public class ReservationCustomerController {
     @FXML
     private TextField toField;
     ArrayList<FlightModel> flightList = new ArrayList<FlightModel>();
+
+    /**
+     * Initializes the list
+     */
     public void initialize() {
 
         tableFLIGHTID.setCellValueFactory(new PropertyValueFactory<FlightModel, String>("flightID"));
@@ -119,6 +130,13 @@ public class ReservationCustomerController {
         return flightList;
     }
 
+    /**
+     * Closes the add panel and returns to reservation if success. Otherwise, do nothing.
+     * Runs when the user clicks on the add button.
+     * @param event
+     * @throws IOException
+     * @throws ParseException
+     */
     @FXML
     public void onAddButtonClick(ActionEvent event) throws IOException, ParseException {
         try {
@@ -132,18 +150,31 @@ public class ReservationCustomerController {
         }
     }
 
+    /**
+     * Returns customer to main page.
+     * Runs when the customer clicks on the main button.
+     * @param event
+     */
     @FXML
-    void onMainButtonClick(ActionEvent event) {
+    public void onMainButtonClick(ActionEvent event) {
 
     }
-
+    /**
+     * Refreshes the list.
+     * Runs when the customer clicks on the refresh button.
+     * @param event
+     */
     @FXML
     public void onRefreshButtonClick (ActionEvent event)
     {
         flightList.clear();
         initialize();
     }
-
+    /**
+     * Searches from the list of flights.
+     * Runs when the customer clicks on the search button.
+     * @param event
+     */
     @FXML
     public void onSearchButtonClick(ActionEvent event) throws IOException, ParseException {
         String to = toField.getText();
@@ -184,7 +215,11 @@ public class ReservationCustomerController {
         tableView.getItems().setAll(searchList);
 
     }
-
+    /**
+     * Returns customer to login page.
+     * Runs when the customer clicks on the sign-out button.
+     * @param event
+     */
     @FXML
     public void onSignOutButtonClick(ActionEvent event) {
         try {

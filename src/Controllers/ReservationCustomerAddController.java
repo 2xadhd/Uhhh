@@ -1,3 +1,7 @@
+/**
+ * @author Dai/Vi Quach
+ * @version 1.0
+ */
 package Controllers;
 
 import Models.CustomerModel;
@@ -20,6 +24,9 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.UUID;
 
+/**
+ * Controls the inner workings of reservation customer add panel
+ */
 public class ReservationCustomerAddController {
 
     @FXML
@@ -52,9 +59,15 @@ public class ReservationCustomerAddController {
     ArrayList<FlightModel> flightList = new ArrayList<FlightModel>();
     ArrayList<CustomerModel> cusList = new ArrayList<CustomerModel>();
 
+    /**
+     * Initializes the add panel.
+     */
     public void initialize() {
         parseFlightList();
         parseCustomerList();
+        /**
+         * Updates the departure and arrival date and price when text changes
+         */
         flightID1Field.textProperty().addListener((obs, oldText, newText) -> {
             for (FlightModel fl:flightList)
             {   System.out.println(flightID1Field.getText().trim() + "  " + fl.getFlightID());
@@ -99,7 +112,7 @@ public class ReservationCustomerAddController {
 
 
     /**
-     * to get all the flights from the database
+     * Gets all the flights from the database
      * @return
      */
     private void parseFlightList() {
@@ -131,6 +144,9 @@ public class ReservationCustomerAddController {
         sc.close();
     }
 
+    /**
+     * Gets all the customers from the database
+     */
     private void parseCustomerList() {
         String path = new File("src/Database/customer.txt").getAbsolutePath();
         String input;
@@ -269,6 +285,10 @@ public class ReservationCustomerAddController {
         fr.close();
     }
 
+    /**
+     * Closes the add panel and returns to the reservation panel.
+     * @param event
+     */
     public void onCancelButtonClick (ActionEvent event)
     {
         try {
