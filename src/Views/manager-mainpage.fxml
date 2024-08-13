@@ -4,23 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ManagerMainPage">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManagerMainController">
    <children>
       <AnchorPane prefHeight="72.0" prefWidth="394.0" style="-fx-background-color: #E96151;">
          <children>
-            <Text fx:id="MainPageText" layoutX="77.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Manager Main Page" wrappingWidth="255.18399047851562">
+            <Text fx:id="MainPageText" layoutX="77.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager Main Page" wrappingWidth="255.18399047851562">
                <font>
                   <Font name="Apple SD Gothic Neo Regular" size="24.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <Hyperlink fx:id="SignOutHyper" layoutX="319.0" layoutY="310.0" prefHeight="25.0" prefWidth="75.0" text="Sign Out" textFill="#105ffcf2">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="13.0" />
-         </font>
-      </Hyperlink>
-      <ToggleButton fx:id="ReservationButton" layoutX="101.0" layoutY="125.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Reservations" />
+      <Hyperlink fx:id="SignOutHyper" layoutX="300.0" layoutY="310.0" text="Sign out" onAction="#onSignOutClick"/>
+      <ToggleButton fx:id="ReservationButton" layoutX="101.0" layoutY="125.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Reservations" onAction="#onReservationButtonClick"/>
       <ToggleButton fx:id="ReportButton" layoutX="101.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Run a Report" />
       <ToggleButton fx:id="CustomerButton" layoutX="101.0" layoutY="214.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Customers" />
       <ToggleButton fx:id="ManagerButton" layoutX="101.0" layoutY="259.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Managers" />
