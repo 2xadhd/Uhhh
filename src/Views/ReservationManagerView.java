@@ -1,5 +1,5 @@
 /**
- * @author: Dai/Vi Quach, Deekshitha Chavalla
+ * @author: Dai/Vi Quach, Arpi Mangasaryan
  * @version: 1.0
  * date: 8/1/2024
  */

@@ -7,6 +7,7 @@ module src {
     requires javafx.controls;
     requires java.desktop;
     requires java.sql;
+    requires org.junit.jupiter.api;
     exports Controllers; opens Controllers to javafx.fxml;
     exports Views;
     exports Models;

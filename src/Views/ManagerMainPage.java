@@ -30,7 +30,7 @@ public class ManagerMainPage extends Application {
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(ManagerMainPage.class.getResource("manager-mainpage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 394, 392);
+        Scene scene = new Scene(fxmlLoader.load(), 394, 339);
         stage.setScene(scene);
         stage.show();
     }

@@ -101,39 +101,20 @@ public class RegisterController {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
-
-        /**
-         * validation goes here
-         */
-        while (flag) {
-            /**
-             * check if username is taken
-             */
             for (CustomerModel customerModel : cusList)
                 if (Objects.equals(username, customerModel.getUserID())) {
                     registrationMessageLabel.setText("Username has been taken!");
                     flag = false;
-                    break;
                 }
-            /**
-             * check if password matches confirmPassword field
-             */
             if (!password.equals(confirmPassword)) {
                 registrationMessageLabel.setText("Password does not match");
                 flag = false;
-                break;
             }
-
-            /**
-             * if nothing is out of place, add Customer to our database
-             */
             if (flag) {
                 CustomerModel cus = new CustomerModel(firstname, lastname, username, password, email, phone);
                 addCustomer(cus);
                 registrationMessageLabel.setText("Registration was a success!");
-                break;
             }
-        }
     }
 
     /**
