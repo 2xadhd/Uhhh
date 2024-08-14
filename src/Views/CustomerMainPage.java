@@ -1,3 +1,8 @@
+/**
+ *  @author: Harrison Turner
+ *  @version: 1.0
+ *  date: 08/14/2024
+ */
 package Views;
 
 import javafx.application.Application;
@@ -7,7 +12,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * The CustomerMainPage class represents the main page for customers in the application.
+ * This class extends the JavaFX Application class and handles the initialization and display of the customer main page.
+ */
 public class CustomerMainPage extends Application {
+
+    /**
+     * The main entry point for all JavaFX applications.
+     * This method is called after the init method has returned, and after the system is ready for the application to begin running.
+     *
+     * @param stage the primary stage for this application, onto which the application scene can be set
+     */
     @Override
     public void start(Stage stage) {
         try {
@@ -23,6 +39,12 @@ public class CustomerMainPage extends Application {
         }
     }
 
+    /**
+     * The main method is the entry point of the application.
+     * It calls the launch method, which in turn calls the start method.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

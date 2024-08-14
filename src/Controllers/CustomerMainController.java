@@ -1,20 +1,30 @@
+/**
+ *  @author: Harrison Turner
+ *  @version: 1.0
+ *  date: 08/14/2024
+ */
 package Controllers;
 
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 import Models.ReservationModel;
+import Views.LoginView;
+import Views.ReservationCustomerView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.Node;
+import javafx.stage.Stage;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,12 +32,12 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
-import java.io.IOException;
-import Views.LoginView;
-import javafx.scene.Scene;
-import Views.ReservationCustomerView;
 
+/**
+ * Controller class for the Customer Main Page.
+ * This class handles the user interactions and data display for the customer main page,
+ * including loading flight and reservation data, and handling navigation events.
+ */
 public class CustomerMainController implements Initializable {
 
     @FXML
@@ -59,11 +69,20 @@ public class CustomerMainController implements Initializable {
 
     private ObservableList<ReservationModel> reservationList = FXCollections.observableArrayList();
     private Map<String, String> flightRoutes = new HashMap<>();
+    private String currentUsername;
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadFlightsFromFile();
-        loadReservationsFromFile();
+        if (currentUsername != null) {
+            loadReservationsFromFile(currentUsername);
+        }
 
         reservationColumn.setCellValueFactory(new PropertyValueFactory<>("reservationID"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -83,6 +102,22 @@ public class CustomerMainController implements Initializable {
         table.setItems(reservationList);
     }
 
+    /**
+     * Sets the current username and loads the corresponding reservations.
+     *
+     * @param username The username of the currently logged-in user.
+     */
+    public void setCurrentUsername(String username) {
+        this.currentUsername = username;
+        if (currentUsername != null) {
+            loadReservationsFromFile(currentUsername);
+        }
+    }
+
+    /**
+     * Loads flight data from a file and populates the flightRoutes map.
+     * The flightRoutes map contains the flight ID as the key and the route (departure to arrival) as the value.
+     */
     private void loadFlightsFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/database/flight.txt"))) {
             String line;
@@ -99,14 +134,20 @@ public class CustomerMainController implements Initializable {
         }
     }
 
-    private void loadReservationsFromFile() {
+    /**
+     * Loads reservation data for the given username from a file and populates the reservationList.
+     * Only reservations matching the current user's username are loaded.
+     *
+     * @param username The username for which to load reservations.
+     */
+    private void loadReservationsFromFile(String username) {
+        reservationList.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader("src/database/reservation.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split("\\s*,\\s*");
-                if (data.length == 12) {
+                if (data.length == 12 && data[1].equals(username)) {
                     String reservationID = data[0];
-                    String username = data[1];
                     int seatNum = Integer.parseInt(data[2]);
                     int seatNum2 = data[3].isEmpty() ? 0 : Integer.parseInt(data[3]);
                     double price = Double.parseDouble(data[4].replaceAll("\\s+", ""));
@@ -118,7 +159,6 @@ public class CustomerMainController implements Initializable {
                     String cardNumber = data[10];
                     String expDate = data[11];
 
-                    // Create the ReservationModel object using the full constructor
                     ReservationModel reservation = new ReservationModel(
                             reservationID,
                             username,
@@ -134,7 +174,6 @@ public class CustomerMainController implements Initializable {
                             expDate
                     );
 
-                    // Add to the list
                     reservationList.add(reservation);
                 }
             }
@@ -143,11 +182,11 @@ public class CustomerMainController implements Initializable {
         }
     }
 
-    @FXML
-    protected void onMakeReservationMouseClick() {
-        // Handle reservation logic
-    }
-
+    /**
+     * Handles the Sign Out action, returning the user to the login view.
+     *
+     * @param event The ActionEvent triggered by the user.
+     */
     @FXML
     private void onSignOutClick(ActionEvent event) {
         try {
@@ -161,6 +200,11 @@ public class CustomerMainController implements Initializable {
         }
     }
 
+    /**
+     * Handles the action of making a new reservation, switching the view to the reservation page.
+     *
+     * @param event The ActionEvent triggered by the user.
+     */
     @FXML
     private void onMakeReservationClick(ActionEvent event) {
         try {
