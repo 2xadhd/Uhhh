@@ -5,7 +5,9 @@
 package Controllers;
 
 import Models.FlightModel;
+import Views.CustomerMainPage;
 import Views.LoginView;
+import Views.ManagerMainPage;
 import Views.ReservationCustomerView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -157,7 +159,16 @@ public class ReservationCustomerController {
      */
     @FXML
     public void onMainButtonClick(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            Stage mainStage = new Stage();
+            CustomerMainPage customerMainPage = new CustomerMainPage();
+            customerMainPage.start(mainStage);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Refreshes the list.
