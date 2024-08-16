@@ -20,6 +20,7 @@
       <ToggleButton fx:id="ReportButton" layoutX="101.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Run a Report" />
       <ToggleButton fx:id="CustomerButton" layoutX="101.0" layoutY="214.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Customers" />
       <ToggleButton fx:id="ManagerButton" layoutX="101.0" layoutY="259.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Managers" />
+      <ToggleButton fx:id="FlightsButton" layoutX="101.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Flights" onAction="#onFlightsButtonClick"/>
       <Label fx:id="WelcomeLabel" layoutX="14.0" layoutY="79.0" text="Welcome">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="18.0" />

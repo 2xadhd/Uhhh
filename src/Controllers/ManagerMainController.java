@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import Views.FlightView;
 import javafx.scene.Node;
 import Views.ManagerMainPage;
 import javafx.event.ActionEvent;
@@ -43,6 +44,9 @@ public class ManagerMainController implements Initializable {
     private ToggleButton ManagerButton;
 
     @FXML
+    private ToggleButton FlightsButton;
+
+    @FXML
     private Hyperlink ReturntoLoginHyper;
 
     @FXML
@@ -73,7 +77,6 @@ public class ManagerMainController implements Initializable {
         String report = ReportButton.getText();
         String customer = CustomerButton.getText();
         String manager = ManagerButton.getText();
-        // Add your logic for handling menu actions here
     }
 
     /**
@@ -101,12 +104,33 @@ public class ManagerMainController implements Initializable {
      *
      * @param event the event triggered by clicking the "Reservation" button
      */
+
     @FXML
     private void onReservationButtonClick(ActionEvent event) {
         try {
-            ReservationManagerView reservationView = new ReservationManagerView();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(ReservationManagerView.class.getResource("manager-reservation-page.fxml"));
+            Scene scene = new Scene(loader.load());
+            currentStage.setScene(scene);
+            currentStage.setTitle("Manage Reservations");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Handles the flights button click action.
+     * This method navigates the user to the flight management view for managers.
+     *
+     * @param event the event triggered by clicking the "Flights" button
+     */
+
+    @FXML
+    private void onFlightsButtonClick(ActionEvent event) {
+        try {
+            FlightView flightView = new FlightView();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            reservationView.start(stage);
+            flightView.start(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

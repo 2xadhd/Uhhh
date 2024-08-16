@@ -24,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -208,9 +207,10 @@ public class CustomerMainController implements Initializable {
     @FXML
     private void onMakeReservationClick(ActionEvent event) {
         try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
             ReservationCustomerView reservationView = new ReservationCustomerView();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            reservationView.start(stage);
+            reservationView.start(currentStage);
         } catch (IOException e) {
             e.printStackTrace();
         }
